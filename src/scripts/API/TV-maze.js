@@ -4,6 +4,11 @@ class tvAPI {
     this.root = 'https://api.tvmaze.com'
   }
 
+  getAllShows = async () => {
+    const response = await fetch(`${this.root}/shows?page=0`);
+   return this.getAPIsResponse(response);
+  }
+  
   getShow = async (id) => {
     const response = await fetch(`${this.root}/shows/${id}`);
    return this.getAPIsResponse(response);
