@@ -30,6 +30,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.2",
     "gh-pages": "^3.2.3",
     "jquery": "^3.6.0",
