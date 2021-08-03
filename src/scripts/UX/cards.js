@@ -1,21 +1,21 @@
-import { tv } from "../API/TV-maze";
+/* eslint-disable no-restricted-syntax */
+import { tv } from '../API/TV-maze';
 
-class cardsUX {
-
-  constructor(){
+class CardsUX {
+  constructor() {
     this.itemsList = document.querySelector('.items-list');
   }
 
-  renderCards = async() => {
-    const arrayOfShows = await tv.getAllShows()
-    for (let show of arrayOfShows){
-      const clone = this.itemsList.firstElementChild.cloneNode(true)
-      clone.classList.remove('d-none')
-      this.setValuesOfCards(clone, show)
-      this.itemsList.appendChild(clone)
+  renderCards = async () => {
+    const arrayOfShows = await tv.getAllShows();
+    for (const show of arrayOfShows) {
+      const clone = this.itemsList.firstElementChild.cloneNode(true);
+      clone.classList.remove('d-none');
+      this.setValuesOfCards(clone, show);
+      this.itemsList.appendChild(clone);
     }
   }
-  
+
   setValuesOfCards = (element, show) => {
     element.querySelector('.card-img-top').src = show.image.medium;
     element.querySelector('.card-title').innerText = show.name;
@@ -23,6 +23,7 @@ class cardsUX {
   }
 }
 
-const showsList = new cardsUX
+const showsList = new CardsUX();
 
-export { showsList }
+// eslint-disable-next-line import/prefer-default-export
+export { showsList };
