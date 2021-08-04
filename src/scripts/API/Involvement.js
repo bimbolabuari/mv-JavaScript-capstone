@@ -1,32 +1,17 @@
+import request from '../utils/api-request';
+
 class InvolvementAPI {
   constructor() {
-    this.root = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p6jun1pox25cuUtb59m6';
-    this.gameId = 'DbHnbvbCYIfhWnFC6JwJ'
+    this.likesURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZOlmT2mI46IiDxo5Br8v/likes';
   }
 
-  getLikes = async () => {
-    const response = await fetch(`${this.root}/likes/`);
-    return this.getAPIsResponse(response);
+  setLike = (movieId) => {
+    request.postApi(this.likesURL, { item_id: movieId });
   }
 
-  setLike = async (movieId) => {
-    const response = await fetch(`${this.root}/likes/`, {
-      method: 'POST',
-      body: JSON.stringify({ item_id: movieId }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
-    this.getAPIsResponse(response);
-  }
-
-  getAPIsResponse = async (response) => {
-    if (response.ok) {
-      const jsonResponse = await response.json();
-      return jsonResponse;
-    }
-    const message = `An error has occured: ${response.status}`;
-    throw new Error(message);
+  getLikes =async () => {
+    const likes = await request.getAPI(this.likesURL);
+    return likes;
   }
 }
 
