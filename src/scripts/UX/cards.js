@@ -11,7 +11,7 @@ class CardsUX {
     for (const show of arrayOfShows) {
       const clone = this.itemsList.firstElementChild.cloneNode(true);
       clone.classList.remove('d-none');
-      this.setValuesOfCards(clone, show);
+      this.setValuesOfCards(clone, show)
       this.itemsList.appendChild(clone);
     }
   }
