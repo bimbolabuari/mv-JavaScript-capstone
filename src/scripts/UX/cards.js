@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 import { tv } from '../API/TV-maze';
 import { involvement } from '../API/Involvement';
+import { elisteners } from '../utils/listeners';
 
 class CardsUX {
   constructor() {
@@ -22,13 +23,16 @@ class CardsUX {
     }
   }
 
-  setValuesOfCards = async (element, show, likes) => {
+  setValuesOfCards = (element, show, likes) => {
     element.querySelector('.card-img-top').src = show.image.medium;
     element.querySelector('.card-title').innerText = show.name;
     element.querySelector('.card-text').innerHTML = show.summary;
-    element.querySelector('.card-body__likebtn').setAttribute('data-id', show.id);
-    element.querySelector('.card-body__likes').setAttribute('data-id', show.id);
-    element.querySelector('.card-body__likes').innerHTML = `${likes} people like this`;
+    const likeBtn = element.querySelector('.card-body__likebtn');
+    likeBtn.setAttribute('data-id', show.id);
+    elisteners.addLikeListener(likeBtn);
+    const displayLikes = element.querySelector('.card-body__likes');
+    displayLikes.classList.add(`movie-${show.id}`);
+    displayLikes.innerHTML = `${likes} people like this`;
   }
 }
 
