@@ -11,10 +11,12 @@ class CardsUX {
 
   renderCards = async () => {
     const arrayOfShows = await tv.getAllShows();
+    const arrOfMoviesToDsiplay = arrayOfShows.slice(0, 49);
     const arrayOfLikes = await involvement.getLikes();
     const numberOfMovies = await counter.moviesCounter();
-    document.querySelector('.alert').innerHTML = `We have ${numberOfMovies} movies for you`;
-    for (const show of arrayOfShows) {
+    const numberOfMoviesInDisplay = counter.countElements(arrOfMoviesToDsiplay);
+    document.querySelector('.alert').innerHTML = `You are seeing ${numberOfMoviesInDisplay} of the ${numberOfMovies} movies we have for you`;
+    for (const show of arrOfMoviesToDsiplay) {
       let numOfLikes = 0;
       if (arrayOfLikes.some((element) => element.item_id === show.id)) {
         numOfLikes = arrayOfLikes.find((like) => like.item_id === show.id).likes;
