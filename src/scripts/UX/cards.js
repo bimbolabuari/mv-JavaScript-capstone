@@ -2,6 +2,7 @@
 import { tv } from '../API/TV-maze';
 import { involvement } from '../API/Involvement';
 import { elisteners } from '../utils/listeners';
+import { counter } from '../utils/counter';
 
 class CardsUX {
   constructor() {
@@ -11,6 +12,8 @@ class CardsUX {
   renderCards = async () => {
     const arrayOfShows = await tv.getAllShows();
     const arrayOfLikes = await involvement.getLikes();
+    const numberOfMovies = await counter.moviesCounter();
+    document.querySelector('.alert').innerHTML = `We have ${numberOfMovies} movies for you`;
     for (const show of arrayOfShows) {
       let numOfLikes = 0;
       if (arrayOfLikes.some((element) => element.item_id === show.id)) {
