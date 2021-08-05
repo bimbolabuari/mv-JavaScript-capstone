@@ -1,42 +1,62 @@
-//  ZOlmT2mI46IiDxo5Br8v
+const commentAPI = () => {
+  const displayComment = document.querySelector('.display-comment');
+  const displayCommentBtn = document.querySelector('.display-comment-btn');
+  const username = document.querySelector('.text-input');
+  const userInsight = document.querySelector('.textarea');
+  const form = document.querySelector('.form');
 
-fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/', {
-  method: 'POST',
-  body: JSON.stringify({
-    item_id: 'item1',
-  }),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-})
-  .then((response) => response.text())
-  .then((json) => console.log(json));
+  const postComment = (userName, userInsight) => {
+    fetch(
+      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/o7hamWo6ePWlkw5D7zAB/comments',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          item_id: 'item1',
+          username: userName,
+          comment: userInsight,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      },
+    )
+      .then((response) => response.text())
+      .then((json) => json);
+  };
 
-// comment Involvement API
+  const getComment = async () => {
+    const commentData = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/o7hamWo6ePWlkw5D7zAB/comments?item_id=item1', {
+    })
+      .then((res) => res.json());
+    return commentData;
+  };
+  const commentNumber = document.querySelector('.counter');
+  let counter;
+  getComment().then((data) => {
+    counter = data.length + 1;
+    commentNumber.innerHTML = counter;
+  });
 
-fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZOlmT2mI46IiDxo5Br8v/comments', {
-  method: 'POST',
-  body: JSON.stringify({
-    item_id: 'item1',
-    username: 'Jane',
-    comment: 'Hello',
-  }),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-})
-  .then((response) => response.text())
-  .then((json) => console.log(json));
+  form.addEventListener('submit', (e) => {
+    const usernameValue = username.value;
+    const userInsightValue = userInsight.value;
+    e.preventDefault();
+    postComment(usernameValue, userInsightValue);
+    form.reset();
+  });
 
-fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ZOlmT2mI46IiDxo5Br8v/comments', {
-  body: JSON.stringify({
-    item_id: 'item1',
-    username: 'Jane',
-    comment: 'Hello',
-  }),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
-})
-  .then((response) => response.text())
-  .then((json) => console.log(json));
+  displayCommentBtn.addEventListener('click', () => {
+    getComment().then((data) => {
+      displayComment.innerHTML = '';
+      data.forEach((data) => {
+        const commentList = document.createElement('div');
+        const commentText = document.createElement('p');
+        commentText.innerHTML = `${data.creation_date}  ${data.username}: ${data.comment}`;
+        commentList.appendChild(commentText);
+        displayComment.appendChild(commentList);
+      });
+    });
+  });
+};
+
+export default commentAPI;

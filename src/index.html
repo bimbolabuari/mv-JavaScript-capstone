@@ -66,22 +66,25 @@
             </div>
             </div>
             <div class="comment-section">
-              <h4>Comments(2)</h4>  
+              <div class="d-flex justify-content-between">
+              <h4>Comments(<span class="counter"></span>)</h4>
+              <button type="button" class="btn btn-primary ml-2 display-comment-btn">View comments</button>
+            </div>
+            <div class="display-comment"></div>
             </div>
             <div class="form-section">
               <h5>Add a comment</h5>
-              <div class="display-comment"></div>
               <form class="form">
                 <div class="form-group">
                   <label for="exampleFormControlInput1"></label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Your name">
+                  <input type="text" class="form-control text-input" id="exampleFormControlInput1" placeholder="Your name">
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1"></label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder="Your Insight"></textarea>
+                  <textarea class="form-control textarea" id="exampleFormControlTextarea1" rows="3"  placeholder="Your Insight"></textarea>
                 </div>
                 <div class="form-group mt-4">
-                  <button type="button" class="btn btn-primary mt-2 mb-2">Comment</button>
+                  <button type="submit" class="btn btn-primary mt-2 mb-2 comment">Comment</button>
                 </div>
               </form>
             </div>
