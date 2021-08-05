@@ -5,8 +5,4 @@ import { showsList } from './UX/cards';
 import { showPopup } from './UX/popup';
 
 showsList.renderCards();
-showPopup.renderPopup();
-
-
-
-
+showPopup();
