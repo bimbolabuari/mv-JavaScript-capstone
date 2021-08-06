@@ -13,17 +13,18 @@
 - javaScript
 - Webpack
 
-## Live Demo
-You can see my page live here: 
-[Check it out!](https://bimbolabuari.github.io/mv-JavaScript-capstone/)
+## Feature Video
+Watch us give a little description of our web app.
+[Check it out!](https://www.loom.com/share/56c3887bdc754768a0b90cd1196725a4)
 
 
 ## Getting Started
-To get a local copy run the following steps
-- clone this repo
-- `npm install` to install the packages
-- `npm install @popperjs/core --save` to use the bootstrap features
-- `npm run start` to build dist files and run local server
+To get a local copy follow the following steps !
+- open your terminal 
+- clone this repo `git clone https://github.com/bimbolabuari/mv-JavaScript-capstone.git`
+- Install the packages with npm `npm install`
+- run  `npm install @popperjs/core --save` to use the bootstrap features
+- use `npm run start` to build dist files and run local server
 
 
 ## Authors
