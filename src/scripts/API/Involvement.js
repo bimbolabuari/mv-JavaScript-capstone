@@ -30,13 +30,11 @@ const involvement = new InvolvementAPI();
 // eslint-disable-next-line import/prefer-default-export
 export { involvement };
 
-const commentAPI = () => {
-  const displayComment = document.querySelector('.display-comment');
-  const displayCommentBtn = document.querySelector('.display-comment-btn');
-  const username = document.querySelector('.text-input');
-  const userInsight = document.querySelector('.textarea');
-  const form = document.querySelector('.form');
-
+const displayComment = document.querySelector('.display-comment');
+const displayCommentBtn = document.querySelector('.display-comment-btn');
+const username = document.querySelector('.text-input');
+const userInsight = document.querySelector('.textarea');
+const form = document.querySelector('.form');
 
 export const postComment = (userName, userInsight) => {
   fetch(
@@ -70,7 +68,7 @@ getComment().then((data) => {
   return data.length;
 });
 
-const commentAPI = () => {
+export const commentAPI = () => {
   form.addEventListener('submit', (e) => {
     const usernameValue = username.value;
     const userInsightValue = userInsight.value;
@@ -92,5 +90,3 @@ const commentAPI = () => {
     });
   });
 };
-
-export default commentAPI;
