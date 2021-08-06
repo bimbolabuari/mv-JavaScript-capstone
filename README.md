@@ -1,20 +1,55 @@
-# Javascript-plantilla
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-Para usarla primero correr
-`npm i`
+# Movies revies Captones
+> This page allows you to see the reviews of different films that we get from an API, you can like or comment the movies if you like them or not.
 
-Esta es mi plantilla para proyectos de Javascript
-Incluye 
-- webpack
-  - `npm run build`
-  - `npm start` para correr en el servidor local
-- linters
-For testing you have to add the . hidden files
-  - `npx hint`
-  - `npx stylint "**/*.{css.scss}"`
-  - `npx eslint .`
-- tests
-Check that it has babel installed
-  - `npm run test`
-- npm para deploy a github
- - `npm run deploy
+# Screenshots
+![screenshot](screenshot.png)
+
+## Built With
+- html
+- sass
+- bootstrap
+- javaScript
+- Webpack
+
+## Live Demo
+You can see my page live here: 
+[Check it out!](https://bimbolabuari.github.io/mv-JavaScript-capstone/)
+
+
+## Getting Started
+To get a local copy run the following steps
+- clone this repo
+- `npm install` to install the packages
+- `npm install @popperjs/core --save` to use the bootstrap features
+- `npm run start` to build dist files and run local server
+
+
+## Authors
+
+👤 *Diego Solis*
+
+- GitHub: [@disc3110](https://github.com/disc3110)
+
+👤 *Abimbola Buari*
+
+- GitHub: [@bimbolabuari](https://github.com/bimbolabuari)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+<!--Feel free to check the [issues page](../../issues/).-->
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+<!--## Acknowledgments-->
+
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
