@@ -38,7 +38,6 @@ getComment().then((data) => {
 
 const commentAPI = () => {
   form.addEventListener('submit', (e) => {
-    console.log('Ive been called')
     const usernameValue = username.value;
     const userInsightValue = userInsight.value;
     e.preventDefault();
@@ -60,4 +59,4 @@ const commentAPI = () => {
   });
 };
 
-export { commentAPI as default }
+export { commentAPI as default };
