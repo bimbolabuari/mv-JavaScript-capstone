@@ -30,45 +30,45 @@ const involvement = new InvolvementAPI();
 // eslint-disable-next-line import/prefer-default-export
 export { involvement };
 
-const commentAPI = () => {
-  const displayComment = document.querySelector('.display-comment');
-  const displayCommentBtn = document.querySelector('.display-comment-btn');
-  const username = document.querySelector('.text-input');
-  const userInsight = document.querySelector('.textarea');
-  const form = document.querySelector('.form');
+const displayComment = document.querySelector('.display-comment');
+const displayCommentBtn = document.querySelector('.display-comment-btn');
+const username = document.querySelector('.text-input');
+const userInsight = document.querySelector('.textarea');
+const form = document.querySelector('.form');
 
-  const postComment = (userName, userInsight) => {
-    fetch(
-      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/o7hamWo6ePWlkw5D7zAB/comments',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          item_id: 'item1',
-          username: userName,
-          comment: userInsight,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
+export const postComment = (userName, userInsight) => {
+  fetch(
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/o7hamWo6ePWlkw5D7zAB/comments',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: 'item1',
+        username: userName,
+        comment: userInsight,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
       },
-    )
-      .then((response) => response.text())
-      .then((json) => json);
-  };
+    },
+  )
+    .then((response) => response.text())
+    .then((json) => json);
+};
 
-  const getComment = async () => {
-    const commentData = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/o7hamWo6ePWlkw5D7zAB/comments?item_id=item1', {
-    })
-      .then((res) => res.json());
-    return commentData;
-  };
-  const commentNumber = document.querySelector('.counter');
-  let counter;
-  getComment().then((data) => {
-    counter = data.length + 1;
-    commentNumber.innerHTML = counter;
-  });
+export const getComment = async () => {
+  const commentData = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/o7hamWo6ePWlkw5D7zAB/comments?item_id=item1', {
+  })
+    .then((res) => res.json());
+  return commentData;
+};
 
+const commentNumber = document.querySelector('.counter');
+getComment().then((data) => {
+  commentNumber.innerHTML = `${data.length}`;
+  return data.length;
+});
+
+export const commentAPI = () => {
   form.addEventListener('submit', (e) => {
     const usernameValue = username.value;
     const userInsightValue = userInsight.value;
@@ -90,5 +90,3 @@ const commentAPI = () => {
     });
   });
 };
-
-export default commentAPI;
